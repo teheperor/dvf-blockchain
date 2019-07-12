@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Blockchain">
+      <UniqueIdentifier>{8a84602e-8e58-486e-a195-8d5f9721547a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="cmdline">
+      <UniqueIdentifier>{582639b7-8243-4833-93ce-f5c8a43e30f0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HappyHTTP">
+      <UniqueIdentifier>{6cb2f4e4-e66a-4d35-80d7-e007a8aa39c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="url-cpp">
+      <UniqueIdentifier>{9851fe00-858a-446e-ba75-79385594fa8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="crow">
+      <UniqueIdentifier>{74ed97ad-1091-4ea6-a3e5-d37d47a81a80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="PicoSHA2">
+      <UniqueIdentifier>{fc2a47e8-5b57-4b74-89ef-c76a185b47b6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="crow\crow">
+      <UniqueIdentifier>{00a24c59-17c3-4169-bb90-0b9f071f49c8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="json">
+      <UniqueIdentifier>{c6643cf4-dc08-433e-9aa1-80e78db95191}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="blockchain.hpp">
+      <Filter>Blockchain</Filter>
+    </ClInclude>
+    <ClInclude Include="..\cmdline\cmdline.h">
+      <Filter>cmdline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\crow\crow.h">
+      <Filter>crow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\crow\crow\http_server.h">
+      <Filter>crow\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\crow\crow\json.h">
+      <Filter>crow\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\crow\crow\logging.h">
+      <Filter>crow\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\crow\crow\middleware.h">
+      <Filter>crow\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\crow\crow\middleware_context.h">
+      <Filter>crow\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\crow\crow\mustache.h">
+      <Filter>crow\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\crow\crow\parser.h">
+      <Filter>crow\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\crow\crow\query_string.h">
+      <Filter>crow\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\crow\crow\routing.h">
+      <Filter>crow\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\crow\crow\settings.h">
+      <Filter>crow\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\crow\crow\socket_adaptors.h">
+      <Filter>crow\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\crow\crow\TinySHA1.hpp">
+      <Filter>crow\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\crow\crow\utility.h">
+      <Filter>crow\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\crow\crow\websocket.h">
+      <Filter>crow\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\crow\crow\app.h">
+      <Filter>crow\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\crow\crow\ci_map.h">
+      <Filter>crow\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\crow\crow\common.h">
+      <Filter>crow\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\crow\crow\dumb_timer_queue.h">
+      <Filter>crow\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\crow\crow\http_connection.h">
+      <Filter>crow\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\crow\crow\http_parser_merged.h">
+      <Filter>crow\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\crow\crow\http_request.h">
+      <Filter>crow\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\crow\crow\http_response.h">
+      <Filter>crow\crow</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HappyHTTP\happyhttp.h">
+      <Filter>HappyHTTP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\nlohmann\json.hpp">
+      <Filter>json</Filter>
+    </ClInclude>
+    <ClInclude Include="..\PicoSHA2\picosha2.h">
+      <Filter>PicoSHA2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\url-cpp\psl.h">
+      <Filter>url-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\url-cpp\punycode.h">
+      <Filter>url-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\url-cpp\url.h">
+      <Filter>url-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\url-cpp\utf8.h">
+      <Filter>url-cpp</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="blockchain.cpp">
+      <Filter>Blockchain</Filter>
+    </ClCompile>
+    <ClCompile Include="..\HappyHTTP\happyhttp.cpp">
+      <Filter>HappyHTTP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\url-cpp\psl.cpp">
+      <Filter>url-cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\url-cpp\punycode.cpp">
+      <Filter>url-cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\url-cpp\url.cpp">
+      <Filter>url-cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\url-cpp\utf8.cpp">
+      <Filter>url-cpp</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

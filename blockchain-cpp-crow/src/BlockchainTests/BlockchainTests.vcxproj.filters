@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="BlockchainTests">
+      <UniqueIdentifier>{7a79db31-b6db-4257-99b0-1ce2489ca8e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Catch2">
+      <UniqueIdentifier>{3dd9c5d9-605b-440b-bb55-c76a682447d6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HappyHTTP">
+      <UniqueIdentifier>{36cfe974-cf2f-4735-9e2f-08cbb4eb92b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="url-cpp">
+      <UniqueIdentifier>{ca3116d9-27fa-4c5d-85fa-30f21aae91e0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\HappyHTTP\happyhttp.cpp">
+      <Filter>HappyHTTP</Filter>
+    </ClCompile>
+    <ClCompile Include="..\url-cpp\punycode.cpp">
+      <Filter>url-cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\url-cpp\url.cpp">
+      <Filter>url-cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\url-cpp\utf8.cpp">
+      <Filter>url-cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\url-cpp\psl.cpp">
+      <Filter>url-cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="blockchain_tests.cpp">
+      <Filter>BlockchainTests</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\Catch2\catch.hpp">
+      <Filter>Catch2</Filter>
+    </ClInclude>
+    <ClInclude Include="..\HappyHTTP\happyhttp.h">
+      <Filter>HappyHTTP</Filter>
+    </ClInclude>
+    <ClInclude Include="..\url-cpp\punycode.h">
+      <Filter>url-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\url-cpp\url.h">
+      <Filter>url-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\url-cpp\utf8.h">
+      <Filter>url-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\url-cpp\psl.h">
+      <Filter>url-cpp</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
