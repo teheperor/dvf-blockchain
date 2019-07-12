@@ -1,0 +1,717 @@
+{
+	"info": {
+		"_postman_id": "3835a71e-7260-7b62-a4ef-b091fb8cef9d",
+		"name": "BlockchainTests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Clear globals",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "889756c1-dab5-43d4-85e6-a77cc4c37226",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "77d05072-38ea-4c41-8839-28c2ccd1fb51",
+						"exec": [
+							"pm.globals.clear();",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Server1}}",
+					"host": [
+						"{{Server1}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Server1 /chain",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dc88b0f5-722a-40b6-a3c8-8486e112a0df",
+						"exec": [
+							"pm.test('test headers', () => {\r",
+							"    pm.response.to.be.ok;\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"});\r",
+							"pm.test(\"test body\", () => {\r",
+							"    pm.response.to.be.json;\r",
+							"    const jsonData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(jsonData.length).to.eql(1);\r",
+							"    \r",
+							"    // chain[0]\r",
+							"    const block = jsonData.chain[0];\r",
+							"    pm.expect(block.index).to.eql(1);\r",
+							"    pm.expect(block.previous_hash).to.eql('1');\r",
+							"    pm.expect(block.proof).to.eql(100);\r",
+							"    pm.expect(block.transactions.length).to.eql(0);\r",
+							"    \r",
+							"    pm.globals.set('server1-block-1', block);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Server1}}/chain",
+					"host": [
+						"{{Server1}}"
+					],
+					"path": [
+						"chain"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Server1 /mine",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dc88b0f5-722a-40b6-a3c8-8486e112a0df",
+						"exec": [
+							"pm.test('test headers', () => {\r",
+							"    pm.response.to.be.ok;\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"});\r",
+							"pm.test(\"test body\", () => {\r",
+							"    pm.response.to.be.json;\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(jsonData.index).to.eql(2);\r",
+							"    pm.expect(jsonData.message).to.eql('New Block Forged');\r",
+							"    \r",
+							"    // transactions\r",
+							"    pm.expect(jsonData.transactions.length).to.eql(1);\r",
+							"    const transaction = jsonData.transactions[0];\r",
+							"    pm.expect(transaction.amount).to.eql(1);\r",
+							"    pm.expect(transaction.sender).to.eql('0');\r",
+							"    \r",
+							"    pm.globals.set('server1-mine-1', jsonData);\r",
+							"    pm.globals.set('server1-node-identifier', transaction.recipient);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Server1}}/mine",
+					"host": [
+						"{{Server1}}"
+					],
+					"path": [
+						"mine"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Server1 /chain",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dc88b0f5-722a-40b6-a3c8-8486e112a0df",
+						"exec": [
+							"pm.test('test headers', () => {\r",
+							"    pm.response.to.be.ok;\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"});\r",
+							"pm.test(\"test body\", () => {\r",
+							"    pm.response.to.be.json;\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(jsonData.length).to.eql(2);\r",
+							"    \r",
+							"    // chain[0]\r",
+							"    pm.expect(jsonData.chain[0]).to.eql(pm.globals.get('server1-block-1'));\r",
+							"    \r",
+							"    // chain[1]\r",
+							"    const block = jsonData.chain[1];\r",
+							"    const mine = pm.globals.get('server1-mine-1');\r",
+							"    pm.expect(block.index).to.eql(mine.index);\r",
+							"    pm.expect(block.previous_hash).to.eql(mine.previous_hash);\r",
+							"    pm.expect(block.proof).to.eql(mine.proof);\r",
+							"    pm.expect(block.transactions).to.eql(mine.transactions);\r",
+							"    \r",
+							"    pm.globals.set('server1-block-2', block);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Server1}}/chain",
+					"host": [
+						"{{Server1}}"
+					],
+					"path": [
+						"chain"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Server1 /transactions/new",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "35bf8c1f-91f5-4ff8-9a10-deaf1dfdab40",
+						"exec": [
+							"pm.test('test headers', () => {\r",
+							"    pm.expect(pm.response.code).to.eql(201);\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"});\r",
+							"pm.test(\"test body\", () => {\r",
+							"    pm.response.to.be.json;\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.eql('Transaction will be added to Block 3');\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "558b33a8-7928-4139-8b79-e35437849472",
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"sender\": \"{{server1-node-identifier}}\",\n\t\"recipient\": \"someone-other-address\",\n\t\"amount\": 5\n}"
+				},
+				"url": {
+					"raw": "{{Server1}}/transactions/new",
+					"host": [
+						"{{Server1}}"
+					],
+					"path": [
+						"transactions",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Server1 /mine",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dc88b0f5-722a-40b6-a3c8-8486e112a0df",
+						"exec": [
+							"pm.test('test headers', () => {\r",
+							"    pm.response.to.be.ok;\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"});\r",
+							"pm.test(\"test body\", () => {\r",
+							"    pm.response.to.be.json;\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(jsonData.index).to.eql(3);\r",
+							"    pm.expect(jsonData.message).to.eql('New Block Forged');\r",
+							"    \r",
+							"    // transactions\r",
+							"    pm.expect(jsonData.transactions.length).to.eql(2);\r",
+							"    const node = pm.globals.get('server1-node-identifier');\r",
+							"    let transaction;\r",
+							"    \r",
+							"    transaction = jsonData.transactions[0];\r",
+							"    pm.expect(transaction.amount).to.eql(5);\r",
+							"    pm.expect(transaction.recipient).to.eql('someone-other-address');\r",
+							"    pm.expect(transaction.sender).to.eql(node);\r",
+							"    \r",
+							"    transaction = jsonData.transactions[1];\r",
+							"    pm.expect(transaction.amount).to.eql(1);\r",
+							"    pm.expect(transaction.recipient).to.eql(node);\r",
+							"    pm.expect(transaction.sender).to.eql('0');\r",
+							"    \r",
+							"    pm.globals.set('server1-mine-2', jsonData);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Server1}}/mine",
+					"host": [
+						"{{Server1}}"
+					],
+					"path": [
+						"mine"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Server1 /chain",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dc88b0f5-722a-40b6-a3c8-8486e112a0df",
+						"exec": [
+							"pm.test('test headers', () => {\r",
+							"    pm.response.to.be.ok;\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"});\r",
+							"pm.test(\"test body\", () => {\r",
+							"    pm.response.to.be.json;\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(jsonData.length).to.eql(3);\r",
+							"    \r",
+							"    // chain[0]\r",
+							"    pm.expect(jsonData.chain[0]).to.eql(pm.globals.get('server1-block-1'));\r",
+							"    // chain[1]\r",
+							"    pm.expect(jsonData.chain[1]).to.eql(pm.globals.get('server1-block-2'));\r",
+							"    \r",
+							"    // chain[2]\r",
+							"    const block = jsonData.chain[2];\r",
+							"    const mine = pm.globals.get('server1-mine-2');\r",
+							"    pm.expect(block.index).to.eql(mine.index);\r",
+							"    pm.expect(block.previous_hash).to.eql(mine.previous_hash);\r",
+							"    pm.expect(block.proof).to.eql(mine.proof);\r",
+							"    pm.expect(block.transactions).to.eql(mine.transactions);\r",
+							"    \r",
+							"    pm.globals.set('server1-block-3', block);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Server1}}/chain",
+					"host": [
+						"{{Server1}}"
+					],
+					"path": [
+						"chain"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Server2 /chain",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "dc8a7f52-154a-4894-8ab8-e1a9a5ca989e",
+						"exec": [
+							"pm.test('test headers', () => {\r",
+							"    pm.response.to.be.ok;\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"});\r",
+							"pm.test(\"test body\", () => {\r",
+							"    pm.response.to.be.json;\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(jsonData.length).to.eql(1);\r",
+							"    \r",
+							"    // chain[0]\r",
+							"    const block = jsonData.chain[0];\r",
+							"    pm.expect(block.index).to.eql(1);\r",
+							"    pm.expect(block.previous_hash).to.eql('1');\r",
+							"    pm.expect(block.proof).to.eql(100);\r",
+							"    pm.expect(block.transactions.length).to.eql(0);\r",
+							"    \r",
+							"    pm.globals.set('server2-block-1', block);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Server2}}/chain",
+					"host": [
+						"{{Server2}}"
+					],
+					"path": [
+						"chain"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Server2 /mine",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "953169cc-d2ad-4b91-8f6f-91b49807dc3a",
+						"exec": [
+							"pm.test('test headers', () => {\r",
+							"    pm.response.to.be.ok;\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"});\r",
+							"pm.test(\"test body\", () => {\r",
+							"    pm.response.to.be.json;\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(jsonData.index).to.eql(2);\r",
+							"    pm.expect(jsonData.message).to.eql('New Block Forged');\r",
+							"    \r",
+							"    // transactions\r",
+							"    pm.expect(jsonData.transactions.length).to.eql(1);\r",
+							"    const transaction = jsonData.transactions[0];\r",
+							"    pm.expect(transaction.amount).to.eql(1);\r",
+							"    pm.expect(transaction.sender).to.eql('0');\r",
+							"    \r",
+							"    pm.globals.set('server2-mine-1', jsonData);\r",
+							"    pm.globals.set('server2-node-identifier', transaction.recipient);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Server2}}/mine",
+					"host": [
+						"{{Server2}}"
+					],
+					"path": [
+						"mine"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Server2 /chain",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "5be6218d-1cd1-4ed8-98e0-328d5ed4be37",
+						"exec": [
+							"pm.test('test headers', () => {\r",
+							"    pm.response.to.be.ok;\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"});\r",
+							"pm.test(\"test body\", () => {\r",
+							"    pm.response.to.be.json;\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(jsonData.length).to.eql(2);\r",
+							"    \r",
+							"    // chain[0]\r",
+							"    pm.expect(jsonData.chain[0]).to.eql(pm.globals.get('server2-block-1'));\r",
+							"    \r",
+							"    // chain[1]\r",
+							"    const block = jsonData.chain[1];\r",
+							"    const mine = pm.globals.get('server2-mine-1');\r",
+							"    pm.expect(block.index).to.eql(mine.index);\r",
+							"    pm.expect(block.previous_hash).to.eql(mine.previous_hash);\r",
+							"    pm.expect(block.proof).to.eql(mine.proof);\r",
+							"    pm.expect(block.transactions).to.eql(mine.transactions);\r",
+							"    \r",
+							"    pm.globals.set('server2-block-2', block);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Server2}}/chain",
+					"host": [
+						"{{Server2}}"
+					],
+					"path": [
+						"chain"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Server1 /nodes/register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "2350b1af-4408-4f22-ab53-698511c16707",
+						"exec": [
+							"pm.test('test headers', () => {\r",
+							"    pm.expect(pm.response.code).to.eql(201);\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"});\r",
+							"pm.test(\"test body\", () => {\r",
+							"    const url = require('url')\r",
+							"    const server2_host = url.parse(pm.environment.get('Server2')).host\r",
+							"\r",
+							"    pm.response.to.be.json;\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.eql('New nodes have been added');\r",
+							"    pm.expect(jsonData.total_nodes.length).to.eql(1);\r",
+							"    pm.expect(jsonData.total_nodes[0]).to.eql(server2_host);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nodes\": [\"{{Server2}}\"]\n}"
+				},
+				"url": {
+					"raw": "{{Server1}}/nodes/register",
+					"host": [
+						"{{Server1}}"
+					],
+					"path": [
+						"nodes",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Server1 /nodes/resolve",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "ef7acf14-efbd-4ca2-9cdc-7995451e0fde",
+						"exec": [
+							"pm.test('test headers', () => {\r",
+							"    pm.expect(pm.response.code).to.eql(200);\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"});\r",
+							"pm.test(\"test body\", () => {\r",
+							"    pm.response.to.be.json;\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(jsonData.message).to.eql('Our chain is authoritative');\r",
+							"    \r",
+							"    // chain\r",
+							"    const chain = jsonData.chain;\r",
+							"    pm.expect(chain.length).to.eql(3);\r",
+							"    pm.expect(chain[0]).to.eql(pm.globals.get('server1-block-1'));\r",
+							"    pm.expect(chain[1]).to.eql(pm.globals.get('server1-block-2'));\r",
+							"    pm.expect(chain[2]).to.eql(pm.globals.get('server1-block-3'));\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Server1}}/nodes/resolve",
+					"host": [
+						"{{Server1}}"
+					],
+					"path": [
+						"nodes",
+						"resolve"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Server2 /nodes/register",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "16df6d04-799d-4614-a9b0-671343d8762a",
+						"exec": [
+							"pm.test('test headers', () => {\r",
+							"    pm.expect(pm.response.code).to.eql(201);\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"});\r",
+							"pm.test(\"test body\", () => {\r",
+							"    const url = require('url')\r",
+							"    const server1_host = url.parse(pm.environment.get('Server1')).host\r",
+							"    \r",
+							"    pm.response.to.be.json;\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.message).to.eql('New nodes have been added');\r",
+							"    pm.expect(jsonData.total_nodes.length).to.eql(1);\r",
+							"    pm.expect(jsonData.total_nodes[0]).to.eql(server1_host);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"nodes\": [\"{{Server1}}\"]\n}"
+				},
+				"url": {
+					"raw": "{{Server2}}/nodes/register",
+					"host": [
+						"{{Server2}}"
+					],
+					"path": [
+						"nodes",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Server2 /nodes/resolve",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "52c0b0d0-4c25-4baa-a534-033f26553364",
+						"exec": [
+							"pm.test('test headers', () => {\r",
+							"    pm.expect(pm.response.code).to.eql(200);\r",
+							"    pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');\r",
+							"});\r",
+							"pm.test(\"test body\", () => {\r",
+							"    pm.response.to.be.json;\r",
+							"    var jsonData = pm.response.json();\r",
+							"    \r",
+							"    pm.expect(jsonData.message).to.eql('Our chain was replaced');\r",
+							"    \r",
+							"    // new chain\r",
+							"    const chain = jsonData.new_chain;\r",
+							"    pm.expect(chain.length).to.eql(3);\r",
+							"    pm.expect(chain[0]).to.eql(pm.globals.get('server1-block-1'));\r",
+							"    pm.expect(chain[1]).to.eql(pm.globals.get('server1-block-2'));\r",
+							"    pm.expect(chain[2]).to.eql(pm.globals.get('server1-block-3'));\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Server2}}/nodes/resolve",
+					"host": [
+						"{{Server2}}"
+					],
+					"path": [
+						"nodes",
+						"resolve"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
