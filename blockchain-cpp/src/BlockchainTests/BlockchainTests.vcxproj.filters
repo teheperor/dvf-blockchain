@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="BlockchainTests">
+      <UniqueIdentifier>{7a79db31-b6db-4257-99b0-1ce2489ca8e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="url-cpp">
+      <UniqueIdentifier>{ca3116d9-27fa-4c5d-85fa-30f21aae91e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="doctest">
+      <UniqueIdentifier>{0bf6af0d-0b26-479c-ad0d-82ab8ffb50f9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\url-cpp\punycode.cpp">
+      <Filter>url-cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\url-cpp\url.cpp">
+      <Filter>url-cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\url-cpp\utf8.cpp">
+      <Filter>url-cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\url-cpp\psl.cpp">
+      <Filter>url-cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="blockchain_tests.cpp">
+      <Filter>BlockchainTests</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\url-cpp\punycode.h">
+      <Filter>url-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\url-cpp\url.h">
+      <Filter>url-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\url-cpp\utf8.h">
+      <Filter>url-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\url-cpp\psl.h">
+      <Filter>url-cpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\doctest\doctest.h">
+      <Filter>doctest</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
