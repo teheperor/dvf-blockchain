@@ -5,6 +5,8 @@ using McMaster.Extensions.CommandLineUtils;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Nancy;
+using Nancy.Configuration;
+using Nancy.Diagnostics;
 using Nancy.Extensions;
 using Nancy.Owin;
 using Newtonsoft.Json;
@@ -135,9 +137,18 @@ namespace Blockchain
         }
     }
 
+    public class Bootstrapper : DefaultNancyBootstrapper
+    {
+        public override void Configure(INancyEnvironment environment)
+        {
+            environment.Diagnostics(true, "password");
+            environment.Tracing(true, true);
+            base.Configure(environment);
+        }
+    }
     public class Startup
     {
         public void Configure(IApplicationBuilder app) =>
-            app.UseOwin(x => x.UseNancy(opt => opt.Bootstrapper = new DefaultNancyBootstrapper()));
+            app.UseOwin(x => x.UseNancy(opt => opt.Bootstrapper = new Bootstrapper()));
     }
 }
