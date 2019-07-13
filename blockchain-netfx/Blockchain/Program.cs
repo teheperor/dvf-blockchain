@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using McMaster.Extensions.CommandLineUtils;
 using Nancy;
+using Nancy.Configuration;
+using Nancy.Diagnostics;
 using Nancy.Extensions;
 using Nancy.Hosting.Self;
 using Newtonsoft.Json;
@@ -125,13 +127,23 @@ namespace Blockchain
 
             using (var nancyHost = new NancyHost(
                 new Uri($"http://{host}:{port}"),
-                new DefaultNancyBootstrapper(),
+                new Bootstrapper(),
                 new HostConfiguration() { UrlReservations = new UrlReservations() { CreateAutomatically = true } }))
             {
                 Console.WriteLine($"Running on http://{host}:{port}");
                 nancyHost.Start();
                 Console.ReadLine();
             }
+        }
+    }
+
+    public class Bootstrapper: DefaultNancyBootstrapper
+    {
+        public override void Configure(INancyEnvironment environment)
+        {
+            environment.Diagnostics(true, "password");
+            environment.Tracing(true, true);
+            base.Configure(environment);
         }
     }
 }
