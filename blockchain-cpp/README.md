@@ -4,7 +4,7 @@
 
 ## Description
 
-Web APIフレームワークを[crow](https://github.com/ipkn/crow)から[cpp-httplib](https://github.com/yhirose/cpp-httplib)を使うように切り替えて書いたのがこれ。
+Web APIフレームワークを[crow](https://github.com/ipkn/crow)から[cpp-httplib](https://github.com/yhirose/cpp-httplib)を使うように切り替えて書いたのがこれ。  
 その他の変更点:
  - httpクライアントな処理を[HappyHTTP](https://github.com/mingodad/HappyHTTP)や[Boost.Beast](https://www.boost.org/doc/libs/1_70_0/libs/beast/doc/html/index.html)ではなく[cpp-httplib](https://github.com/yhirose/cpp-httplib)を使うように変えた。
  - [crow](https://github.com/ipkn/crow)と違って[cpp-httplib](https://github.com/yhirose/cpp-httplib)はデフォルトでアクセスログを出力してくれなかったので[easyloggingpp](https://github.com/zuhd-org/easyloggingpp)でログを出力するようにした。
