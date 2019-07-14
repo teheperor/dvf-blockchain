@@ -23,8 +23,12 @@
 #pragma warning(disable: 4267)
 #include "cmdline/cmdline.h"
 #pragma warning(pop)
+#define ELPP_NO_DEFAULT_LOG_FILE
+#include "easyloggingpp/easylogging++.h"
 #include "nlohmann/json.hpp"
 #include "blockchain.hpp"
+
+INITIALIZE_EASYLOGGINGPP
 
 int main(int argc, char* argv[]) {
 	cmdline::parser parser;
@@ -33,6 +37,11 @@ int main(int argc, char* argv[]) {
 	auto const port = static_cast<uint16_t>(parser.get<int>("port"));
 
 	httplib::Server svr;
+	auto *logger = el::Loggers::getLogger("default");
+	svr.set_logger([logger](auto const& req, auto const& res) {
+		auto const& remote_addr = req.headers.find("REMOTE_ADDR")->second;
+		logger->info("%v - %v %v %v %v", remote_addr.c_str(), req.method, req.path, req.version, res.status);
+	});
 
 	boost::uuids::random_generator gen;
 	auto const uuid = boost::uuids::to_string(gen());

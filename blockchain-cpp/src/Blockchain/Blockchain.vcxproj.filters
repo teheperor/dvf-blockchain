@@ -19,6 +19,9 @@
     <Filter Include="cpp-httplib">
       <UniqueIdentifier>{657f0e94-8e82-4bd3-a6e4-08fb855a0c20}</UniqueIdentifier>
     </Filter>
+    <Filter Include="easyloggingpp">
+      <UniqueIdentifier>{408f0d2a-ece5-4feb-bce2-311f70592e88}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="blockchain.hpp">
@@ -48,6 +51,9 @@
     <ClInclude Include="..\cpp-httplib\httplib.h">
       <Filter>cpp-httplib</Filter>
     </ClInclude>
+    <ClInclude Include="..\easyloggingpp\easylogging++.h">
+      <Filter>easyloggingpp</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="blockchain.cpp">
@@ -64,6 +70,9 @@
     </ClCompile>
     <ClCompile Include="..\url-cpp\utf8.cpp">
       <Filter>url-cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\easyloggingpp\easylogging++.cc">
+      <Filter>easyloggingpp</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

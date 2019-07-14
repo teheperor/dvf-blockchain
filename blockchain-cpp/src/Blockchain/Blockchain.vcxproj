@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="..\cmdline\cmdline.h" />
     <ClInclude Include="..\cpp-httplib\httplib.h" />
+    <ClInclude Include="..\easyloggingpp\easylogging++.h" />
     <ClInclude Include="..\nlohmann\json.hpp" />
     <ClInclude Include="..\PicoSHA2\picosha2.h" />
     <ClInclude Include="..\url-cpp\psl.h" />
@@ -30,6 +31,7 @@
     <ClInclude Include="blockchain.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\easyloggingpp\easylogging++.cc" />
     <ClCompile Include="..\url-cpp\psl.cpp" />
     <ClCompile Include="..\url-cpp\punycode.cpp" />
     <ClCompile Include="..\url-cpp\url.cpp" />
