@@ -42,9 +42,10 @@ func New() *Blockchain {
 }
 
 func (b *Blockchain) RegisterNode(address string) error {
+	if !strings.HasPrefix(address, "http://") {
+		address = "http://" + address
+	}
 	if parsedUrl, _ := url.Parse(address); parsedUrl.Host != "" {
-		b.Nodes[parsedUrl.Host] = true
-	} else if parsedUrl, _ = url.Parse("http://" + address); parsedUrl.Host != "" {
 		b.Nodes[parsedUrl.Host] = true
 	} else {
 		return errors.New("Invalid URL")
