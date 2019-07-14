@@ -81,21 +81,23 @@ const main = () => {
     return res.status(201).json(response);
   });
 
-  app.get('/nodes/resolve', async (req, res) => {
-    const replaced = await blockchain.resolveConflicts();
+  app.get('/nodes/resolve', (req, res, next) => {
+    (async () => {
+      const replaced = await blockchain.resolveConflicts();
 
-    const response =
-      replaced?
-      {
-        'message': 'Our chain was replaced',
-        'new_chain': blockchain.chain,
-      }:
-      {
-        'message': 'Our chain is authoritative',
-        'chain': blockchain.chain,
-      };
+      const response =
+        replaced?
+        {
+          'message': 'Our chain was replaced',
+          'new_chain': blockchain.chain,
+        }:
+        {
+          'message': 'Our chain is authoritative',
+          'chain': blockchain.chain,
+        };
 
-    return res.json(response);
+      return res.json(response);
+    })().catch(next);
   });
 
   app.listen(port, () => console.log(`listening on port ${port}!`));
