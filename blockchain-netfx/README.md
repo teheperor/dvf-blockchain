@@ -3,8 +3,10 @@
 [Learn Blockchains by Building One \- HackerNoon\.com](https://hackernoon.com/learn-blockchains-by-building-one-117428612f46)をC# .NET Framework 4.8くらいで写経した。
 
 ## Dependency
+ - [Json.NET](https://github.com/JamesNK/Newtonsoft.Json)
  - [Nancy](https://github.com/NancyFx/Nancy)
  - [NLog](https://github.com/NLog/NLog)
+ - [CommandLineUtils](https://github.com/natemcmaster/CommandLineUtils)
  - [xUnit.net](https://github.com/xunit/xunit)
  - [FluentAssertions](https://github.com/fluentassertions/fluentassertions)
 
