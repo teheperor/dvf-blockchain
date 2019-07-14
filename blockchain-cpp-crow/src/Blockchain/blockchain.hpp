@@ -104,14 +104,14 @@ public:
 	}
 
 	void register_node(std::string const& address) {
-		Url::Url const parsed_url{ address };
+		auto const addr = address.find("http://", 0) == 0 ? address : "http://" + address;
+		Url::Url const parsed_url{ addr };
 		if (!parsed_url.host().empty()) {
-			auto const node =
-				parsed_url.host() +
-				(parsed_url.port() == 0 ? "" : ":" + std::to_string(parsed_url.port()));
+			auto const node = parsed_url.port() == 0 ?
+				parsed_url.host() :
+				parsed_url.host() + ":" + std::to_string(parsed_url.port());
 			nodes.insert(node);
-		} else if (!parsed_url.path().empty())
-			nodes.insert(parsed_url.path());
+		}
 		else
 			throw std::runtime_error("Invalid URL");
 	}
