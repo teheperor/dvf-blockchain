@@ -40,10 +40,10 @@ namespace Blockchain
 
         public void RegisterNode(string address)
         {
+            if (!address.StartsWith("http://"))
+                address = $"http://{address}";
             if (Uri.TryCreate(address, UriKind.Absolute, out var parsedUrl))
                 Nodes.Add(parsedUrl.Authority);
-            else if (Uri.TryCreate($"dummy-scheme://{address}", UriKind.Absolute, out parsedUrl))
-                Nodes.Add(parsedUrl.AbsolutePath);
             else
                 throw new UriFormatException("Invalid URL");
         }
