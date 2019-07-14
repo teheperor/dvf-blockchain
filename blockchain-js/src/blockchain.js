@@ -15,18 +15,14 @@ class Blockchain {
 
   registerNode(address) {
     try {
+      if (address.startsWith('https://'))
+        address = `http://${address}`
       const parsedUrl = new URL(address);
       if (parsedUrl.host)
-        this.nodes.add(parsedUrl.host);
-        return
-    } catch (_) {}
-    try {
-      const parsedUrl = new URL(`http://${address}`);
-      if (parsedUrl.host)
-        this.nodes.add(parsedUrl.host);
-        return
-    } catch (_) {}
-    throw new Error('Invalid URL');
+      this.nodes.add(parsedUrl.host);
+    } catch (_) {
+      throw new Error('Invalid URL');
+    }
   }
 
   static validChain(chain) {
