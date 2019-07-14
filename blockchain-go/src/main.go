@@ -8,6 +8,7 @@ import (
 
 	"github.com/google/uuid"
 	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
 
 	"./blockchain"
 )
@@ -22,6 +23,10 @@ func main() {
 	b := blockchain.New()
 
 	e := echo.New()
+	e.Use(middleware.LoggerWithConfig(middleware.LoggerConfig{
+		Format: "[${time_rfc3339}] ${remote_ip} - ${method} ${path} ${status}\n",
+	}))
+	e.Use(middleware.Recover())
 
 	e.GET("/mine", func(c echo.Context) error {
 		lastBlock := b.LastBlock()
