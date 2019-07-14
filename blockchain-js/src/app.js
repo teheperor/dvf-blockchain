@@ -1,8 +1,9 @@
 'use strict';
 
 const program = require('commander');
-const express = require('express');
 const bodyParser = require('body-parser');
+const express = require('express');
+const morgan = require('morgan');
 const uuidv4 = require('uuid/v4');
 
 const Blockchain = require('./blockchain');
@@ -17,6 +18,7 @@ const main = () => {
 
   app.use(bodyParser.urlencoded({ extended: true }));
   app.use(bodyParser.json());
+  app.use(morgan('short'));
 
   const nodeIdentifier = uuidv4().replace(/-/g, '');
 
