@@ -23,6 +23,23 @@
 - [blockchain-go](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-go)
   - Goで写経。
 
+## Test
+
+[postman](https://github.com/teheperor/dvf-blockchain/tree/master/postman)に[postman](https://www.getpostman.com/products)でのテスト・コレクション、[test](https://github.com/teheperor/dvf-blockchain/tree/master/test)にpython3でのテスト・スクリプトがある。  
+どちらも次のWeb APIにアクセスして応答をテストをする（これは正常系のテストのみ）。
+- Server1 /chain
+- Server1 /mine
+- Server1 /chain
+- Server1 /transactions/new
+- Server1 /mine
+- Server1 /chain
+- Server2 /chain
+- Server2 /mine
+- Server2 /chain
+- Server1 /nodes/register
+- Server1 /nodes/resolve
+- Server2 /nodes/register
+- Server2 /nodes/resolve
 
 ## License
 
