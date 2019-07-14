@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using McMaster.Extensions.CommandLineUtils;
 using Nancy;
+using Nancy.Bootstrapper;
 using Nancy.Configuration;
 using Nancy.Diagnostics;
 using Nancy.Extensions;
 using Nancy.Hosting.Self;
+using Nancy.TinyIoc;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
@@ -125,6 +127,14 @@ namespace Blockchain
                 app.Execute(args);
             }
 
+            if (NLog.LogManager.Configuration == null)
+            {
+                var config = new NLog.Config.LoggingConfiguration();
+                var target = new NLog.Targets.ConsoleTarget() { Error = true };
+                config.AddRule(NLog.LogLevel.Info, NLog.LogLevel.Fatal, target);
+                NLog.LogManager.Configuration = config;
+            }
+
             using (var nancyHost = new NancyHost(
                 new Uri($"http://{host}:{port}"),
                 new Bootstrapper(),
@@ -139,11 +149,24 @@ namespace Blockchain
 
     public class Bootstrapper: DefaultNancyBootstrapper
     {
+        private static readonly NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+
         public override void Configure(INancyEnvironment environment)
         {
             environment.Diagnostics(true, "password");
             environment.Tracing(true, true);
             base.Configure(environment);
+        }
+
+        protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
+        {
+            pipelines.AfterRequest.AddItemToEndOfPipeline(ctx =>
+            {
+                var req = ctx.Request;
+                var res = ctx.Response;
+                var log = $"{req.UserHostAddress} - {req.Method} {req.Path} {req.ProtocolVersion} {res.StatusCode}";
+                logger.Info(log);
+            });
         }
     }
 }
