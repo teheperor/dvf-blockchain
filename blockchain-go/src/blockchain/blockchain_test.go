@@ -37,11 +37,11 @@ func TestBlockchain(t *testing.T) {
 	{
 		proof := ProofOfWork(b.LastBlock())
 		previousHash := Hash(b.LastBlock())
-		if proof != 53631 {
-			t.Errorf("proof wrong. expected=53631, got=%d", proof)
+		if proof != 2964 {
+			t.Errorf("proof wrong. expected=2964, got=%d", proof)
 		}
-		if previousHash != "5299202e43cb2b8168fb7f91b7cf612f71a746ee7bf238376bbe0065ed1f8406" {
-			t.Errorf("previous hash wrong. expected=5299202e43cb2b8168fb7f91b7cf612f71a746ee7bf238376bbe0065ed1f8406, got=%s", previousHash)
+		if previousHash != "26aa6d44bd141589a0d3a1a90b86bf411de90d948abab3557b5b30ca75e4e904" {
+			t.Errorf("previous hash wrong. expected=26aa6d44bd141589a0d3a1a90b86bf411de90d948abab3557b5b30ca75e4e904, got=%s", previousHash)
 		}
 
 		block := b.NewBlock(proof, previousHash)
@@ -89,11 +89,11 @@ func TestBlockchain(t *testing.T) {
 	{
 		proof := ProofOfWork(b.LastBlock())
 		previousHash := Hash(b.LastBlock())
-		if proof != 73854 {
-			t.Errorf("proof wrong. expected=73854, got=%d", proof)
+		if proof != 2409 {
+			t.Errorf("proof wrong. expected=2409, got=%d", proof)
 		}
-		if previousHash != "067ab792aa1fa34ddba5b144508a74210f0cc0b544656bcc5a6e6802f7a6a355" {
-			t.Errorf("previous hash wrong. expected=067ab792aa1fa34ddba5b144508a74210f0cc0b544656bcc5a6e6802f7a6a355, got=%s", previousHash)
+		if previousHash != "7ef1a64eec40e553f39acc252bb3444100d6a95f305e74c2fc40d41d86bbc1d4" {
+			t.Errorf("previous hash wrong. expected=7ef1a64eec40e553f39acc252bb3444100d6a95f305e74c2fc40d41d86bbc1d4, got=%s", previousHash)
 		}
 
 		block := b.NewBlock(proof, previousHash)
@@ -139,11 +139,11 @@ func TestBlockchain(t *testing.T) {
 	{
 		proof := ProofOfWork(b.LastBlock())
 		previousHash := Hash(b.LastBlock())
-		if proof != 10982 {
-			t.Errorf("proof wrong. expected=10982, got=%d", proof)
+		if proof != 35370 {
+			t.Errorf("proof wrong. expected=35370, got=%d", proof)
 		}
-		if previousHash != "f7f57e7bc72ae0e953ea551d0c1b9fbfcd1269faa2ff8f812c545da5ce1ba587" {
-			t.Errorf("previous hash wrong. expected=f7f57e7bc72ae0e953ea551d0c1b9fbfcd1269faa2ff8f812c545da5ce1ba587, got=%s", previousHash)
+		if previousHash != "a26f1ca57d0cb768cb14e1011afd6166183638e779d7f803b335186531275a31" {
+			t.Errorf("previous hash wrong. expected=a26f1ca57d0cb768cb14e1011afd6166183638e779d7f803b335186531275a31, got=%s", previousHash)
 		}
 	}
 }
