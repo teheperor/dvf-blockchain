@@ -11,6 +11,13 @@
       "program": "${workspaceFolder}/src/app.js"
     },
     {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch Program with Worker",
+      "program": "${workspaceFolder}/src/app-with-worker.js",
+      "runtimeArgs": ["--experimental-worker"]
+    },
+    {
       // https://github.com/microsoft/vscode-recipes/tree/master/debugging-mocha-tests
       "type": "node",
       "request": "launch",
