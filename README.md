@@ -20,6 +20,7 @@
   - .NET Coreでは[Self Hosting Nancy · NancyFx/Nancy Wiki](https://github.com/NancyFx/Nancy/wiki/Self-Hosting-Nancy)が使えなかったため[ASP\.NET Core への Kestrel Web サーバーの実装 \| Microsoft Docs](https://docs.microsoft.com/ja-jp/aspnet/core/fundamentals/servers/kestrel?view=aspnetcore-2.2)に切り替えた。
 - [blockchain-js](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-js)
   - JavaScript(ES2017)で写経。
+  - プローフオブワーク処理が重いのでworker_threadsモジュールを使ったバージョンも書いた。
 - [blockchain-go](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-go)
   - Goで写経。
 
