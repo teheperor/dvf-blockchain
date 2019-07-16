@@ -19,7 +19,7 @@ class Blockchain {
         address = `http://${address}`
       const parsedUrl = new URL(address);
       if (parsedUrl.host)
-      this.nodes.add(parsedUrl.host);
+        this.nodes.add(parsedUrl.host);
     } catch (_) {
       throw new Error('Invalid URL');
     }

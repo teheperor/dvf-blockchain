@@ -52,7 +52,7 @@ const main = () => {
 
     const index = blockchain.newTransaction(values['sender'], values['recipient'], values['amount']);
 
-    const response = {'message': `Transaction will be added to Block ${index}`};
+    const response = { 'message': `Transaction will be added to Block ${index}` };
     res.status(201).json(response);
   });
 
@@ -86,15 +86,15 @@ const main = () => {
       const replaced = await blockchain.resolveConflicts();
 
       const response =
-        replaced?
-        {
-          'message': 'Our chain was replaced',
-          'new_chain': blockchain.chain,
-        }:
-        {
-          'message': 'Our chain is authoritative',
-          'chain': blockchain.chain,
-        };
+        replaced ?
+          {
+            'message': 'Our chain was replaced',
+            'new_chain': blockchain.chain,
+          } :
+          {
+            'message': 'Our chain is authoritative',
+            'chain': blockchain.chain,
+          };
 
       return res.json(response);
     })().catch(next);
