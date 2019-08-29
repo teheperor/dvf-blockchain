@@ -4,8 +4,10 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "debug": "node --nolazy --inspect-brk src/app.js",
-    "test": "mocha"
+    "start": "node src/app.js",
+    "test": "mocha --require intelli-espower-loader",
+    "start-app": "node src/app.js",
+    "start-app-with-worker": "node --experimental-worker src/app-with-worker.js"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +22,7 @@
     "uuid": "^3.3.2"
   },
   "devDependencies": {
+    "intelli-espower-loader": "^1.0.1",
     "mocha": "^6.1.4",
     "power-assert": "^1.6.1"
   }

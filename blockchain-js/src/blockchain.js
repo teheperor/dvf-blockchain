@@ -59,7 +59,7 @@ class Blockchain {
       try {
         const res = await fetch(`http://${node}/chain`);
 
-        if (res.status == 200) {
+        if (res.status === 200) {
           const json = await res.json();
           const length = json['length'];
           const chain = json['chain'];
