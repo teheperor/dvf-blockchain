@@ -4,7 +4,8 @@
 
 ## Description
 
-[JavaScript](https://developer.mozilla.org/ja/docs/Web/JavaScript)と[VSCode](https://code.visualstudio.com/)の環境構築のお勉強のために書いてみた。
+[JavaScript](https://developer.mozilla.org/ja/docs/Web/JavaScript)と[VSCode](https://code.visualstudio.com/)の環境構築のお勉強のために書いてみた。  
+プローフオブワーク処理が重いのでworker_threadsモジュールを使ったバージョンも書いた(app-with-worker.js)。
 
 ## Dependency
 
