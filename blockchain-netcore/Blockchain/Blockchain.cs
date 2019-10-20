@@ -38,6 +38,8 @@ namespace Blockchain
 
         public Blockchain() => NewBlock(previousHash: "1", proof: 100);
 
+        private static readonly HttpClient httpClient = new HttpClient();
+
         public void RegisterNode(string address)
         {
             if (!address.StartsWith("http://"))
@@ -84,8 +86,7 @@ namespace Blockchain
 
             foreach (var node in neighbours)
             {
-                var client = new HttpClient();
-                var response = await client.GetAsync($"http://{node}/chain");
+                var response = await httpClient.GetAsync($"http://{node}/chain");
 
                 if (response.StatusCode == HttpStatusCode.OK)
                 {
