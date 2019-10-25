@@ -60,8 +60,7 @@ namespace Blockchain
                 var block = chain[currentIndex];
                 Console.WriteLine(JsonConvert.SerializeObject(lastBlock));
                 Console.WriteLine(JsonConvert.SerializeObject(block));
-                Console.WriteLine();
-                Console.WriteLine("--------------");
+                Console.WriteLine("\n--------------\n");
 
                 var lastBlockHash = Hash(lastBlock);
                 if (block.PreviousHash != lastBlockHash)
