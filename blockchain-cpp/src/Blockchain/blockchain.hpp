@@ -86,6 +86,11 @@ public:
 		new_block(100, "1");
 	}
 
+	/*!
+	Add a new node to the list of nodes
+
+	@param address Address of node.Eg. 'http://192.168.0.5:5000'
+	*/
 	void register_node(std::string const& address) {
 		auto const addr = address.find("http://", 0) == 0 ? address : "http://" + address;
 		Url::Url const parsed_url{ addr };
@@ -99,6 +104,12 @@ public:
 			throw std::runtime_error("Invalid URL");
 	}
 
+	/*!
+	Determine if a given blockchain is valid
+
+	@param chain A blockchain
+	@return true if valid, false if not
+	*/
 	static bool valid_chain(std::vector<block>& chain) {
 		auto last_block = chain[0];
 		size_type current_index = 1;
@@ -123,6 +134,11 @@ public:
 		return true;
 	}
 
+	/*!
+	This is our consensus algorithm, it resolves conflicts by replacing our chain with the longest one in the network.
+
+	@return true if our chain was replaced, false if not
+	*/
 	bool resolve_conflicts() {
 		auto neighbors = nodes;
 		std::vector<block> new_chain;
@@ -154,6 +170,13 @@ public:
 		return false;
 	}
 
+	/*!
+	Create a new Block in the Blockchain
+
+	@param proof The proof given by the Proof of Work algorithm
+	@param previous_hash Hash of previous Block
+	@return New Block
+	*/
 	block const& new_block(int64_t proof, std::string const& previous_hash) {
 		chain.emplace_back(
 			chain.size() + 1,
@@ -168,6 +191,14 @@ public:
 		return chain.back();
 	}
 
+	/*!
+	Creates a new transaction to go into the next mined Block
+
+	@param sender Address of the Sender
+	@param recipient Address of the Recipient
+	@param amount Amount
+	@return The index of the Block that will hold this transaction
+	*/
 	size_type new_transaction(std::string const& sender, std::string const& recipient, int64_t amount) {
 		current_transactions.emplace_back(sender, recipient, amount);
 
@@ -178,11 +209,25 @@ public:
 		return chain.back();
 	}
 
+	/*!
+	Creates a SHA-256 hash of a Block
+
+	@param block Block
+	*/
 	static std::string hash(block const& block) {
 		auto const block_string = nlohmann::json{ block }.dump();
 		return std::move(picosha2::hash256_hex_string(block_string));
 	}
 
+	/*!
+	Simple Proof of Work Algorithm
+
+	- Find a number p' such that hash(pp') contains leading 4 zeroes
+	- Where p is the previous proof, and p' is the new proof
+
+	@param last_block last Block
+	@return
+	*/
 	static int64_t proof_of_work(block const& last_block) {
 		auto const last_proof = last_block.proof;
 		auto const last_hash = hash(last_block);
@@ -194,6 +239,14 @@ public:
 		return proof;
 	}
 
+	/*!
+	Validates the Proof
+
+	@param last_proof Previous Proof
+	@param proof Current Proof
+	@param last_hash The hash of the Previous Block
+	@return true if correct, false if not.
+	*/
 	static bool valid_proof(int64_t last_proof, int64_t proof, std::string const& last_hash) {
 		auto const guess = std::to_string(last_proof) + std::to_string(proof) + last_hash;
 		auto const guess_hash = picosha2::hash256_hex_string(guess);
