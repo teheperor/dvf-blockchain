@@ -4,9 +4,38 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build documents",
+            "label": "build",
             "type": "shell",
-            "command": "cargo doc --no-deps --document-private-items"
+            "command": "cargo",
+            "args": [
+                "build",
+            ]
+        },
+        {
+            "label": "build release",
+            "type": "shell",
+            "command": "cargo",
+            "args": [
+                "build",
+            ]
+        },
+        {
+            "label": "test",
+            "type": "shell",
+            "command": "cargo",
+            "args": [
+                "test",
+            ]
+        },
+        {
+            "label": "doc",
+            "type": "shell",
+            "command": "cargo",
+            "args": [
+                "doc",
+                "--no-deps",
+                "--document-private-items"
+            ]
         }
     ]
 }
