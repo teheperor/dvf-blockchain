@@ -14,16 +14,16 @@
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.19.0",
-    "commander": "^2.20.0",
+    "commander": "^2.20.3",
     "express": "^4.17.1",
     "json-stable-stringify": "^1.0.1",
     "morgan": "^1.9.1",
     "node-fetch": "^2.6.0",
-    "uuid": "^3.3.2"
+    "uuid": "^3.3.3"
   },
   "devDependencies": {
     "intelli-espower-loader": "^1.0.1",
-    "mocha": "^6.1.4",
+    "mocha": "^6.2.2",
     "power-assert": "^1.6.1"
   }
 }

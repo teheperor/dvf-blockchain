@@ -23,7 +23,6 @@
 #pragma warning(disable: 4267)
 #include "cmdline/cmdline.h"
 #pragma warning(pop)
-#define ELPP_NO_DEFAULT_LOG_FILE
 #include "easyloggingpp/easylogging++.h"
 #include "nlohmann/json.hpp"
 #include "blockchain.hpp"

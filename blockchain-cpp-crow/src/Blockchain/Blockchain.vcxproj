@@ -143,68 +143,84 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='debug-beast|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Blockchain.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Blockchain.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='release-beast|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Blockchain.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Blockchain.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='debug-beast|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Blockchain.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Blockchain.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='release-beast|x64'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Blockchain.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="Blockchain.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug-beast|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\bin-$(PlatformToolset)-$(PlatformTarget)\$(Configuration)\</OutDir>
     <IntDir>..\..\obj-$(PlatformToolset)-$(PlatformTarget)\$(ProjectName)\$(Configuration)\</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(Boost)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\bin-$(PlatformToolset)-$(PlatformTarget)\$(Configuration)\</OutDir>
     <IntDir>..\..\obj-$(PlatformToolset)-$(PlatformTarget)\$(ProjectName)\$(Configuration)\</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(Boost)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug-beast|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\bin-$(PlatformToolset)-$(PlatformTarget)\$(Configuration)\</OutDir>
     <IntDir>..\..\obj-$(PlatformToolset)-$(PlatformTarget)\$(ProjectName)\$(Configuration)\</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(Boost)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <OutDir>..\..\bin-$(PlatformToolset)-$(PlatformTarget)\$(Configuration)\</OutDir>
     <IntDir>..\..\obj-$(PlatformToolset)-$(PlatformTarget)\$(ProjectName)\$(Configuration)\</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(Boost)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release-beast|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>..\..\bin-$(PlatformToolset)-$(PlatformTarget)\$(Configuration)\</OutDir>
     <IntDir>..\..\obj-$(PlatformToolset)-$(PlatformTarget)\$(ProjectName)\$(Configuration)\</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(Boost)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|Win32'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>..\..\bin-$(PlatformToolset)-$(PlatformTarget)\$(Configuration)\</OutDir>
     <IntDir>..\..\obj-$(PlatformToolset)-$(PlatformTarget)\$(ProjectName)\$(Configuration)\</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(Boost)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release-beast|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>..\..\bin-$(PlatformToolset)-$(PlatformTarget)\$(Configuration)\</OutDir>
     <IntDir>..\..\obj-$(PlatformToolset)-$(PlatformTarget)\$(ProjectName)\$(Configuration)\</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(Boost)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>..\..\bin-$(PlatformToolset)-$(PlatformTarget)\$(Configuration)\</OutDir>
     <IntDir>..\..\obj-$(PlatformToolset)-$(PlatformTarget)\$(ProjectName)\$(Configuration)\</IntDir>
+    <IncludePath>$(VC_IncludePath);$(WindowsSDK_IncludePath);$(Boost)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='debug-beast|Win32'">
     <ClCompile>
