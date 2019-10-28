@@ -40,6 +40,10 @@ namespace Blockchain
 
         private static readonly HttpClient httpClient = new HttpClient();
 
+        /// <summary>
+        /// Add a new node to the list of nodes
+        /// </summary>
+        /// <param name="address">Address of node. Eg. 'http://192.168.0.5:5000'</param>
         public void RegisterNode(string address)
         {
             if (!address.StartsWith("http://"))
@@ -50,6 +54,11 @@ namespace Blockchain
                 throw new UriFormatException("Invalid URL");
         }
 
+        /// <summary>
+        /// Determine if a given blockchain is valid
+        /// </summary>
+        /// <param name="chain">A blockchain</param>
+        /// <returns>true if valid, false if not</returns>
         static public bool ValidChain(IList<Block> chain)
         {
             var lastBlock = chain[0];
@@ -76,6 +85,10 @@ namespace Blockchain
             return true;
         }
 
+        /// <summary>
+        /// This is our consensus algorithm, it resolves conflicts by replacing our chain with the longest one in the network.
+        /// </summary>
+        /// <returns>true if our chain was replaced, false if not</returns>
         public async Task<bool> ResolveConflicts()
         {
             var neighbours = Nodes;
@@ -111,6 +124,12 @@ namespace Blockchain
             return false;
         }
 
+        /// <summary>
+        /// Create a new Block in the Blockchain
+        /// </summary>
+        /// <param name="proof">The proof given by the Proof of Work algorithm</param>
+        /// <param name="previousHash">Hash of previous Block</param>
+        /// <returns>New Block</returns>
         public Block NewBlock(long proof, string previousHash)
         {
             var block = new Block
@@ -128,6 +147,13 @@ namespace Blockchain
             return block;
         }
 
+        /// <summary>
+        /// Creates a new transaction to go into the next mined Block
+        /// </summary>
+        /// <param name="sender">Address of the Sender</param>
+        /// <param name="recipient">Address of the Recipient</param>
+        /// <param name="amount">Amount</param>
+        /// <returns>The index of the Block that will hold this transaction</returns>
         public int NewTransaction(string sender, string recipient, long amount)
         {
             CurrentTransactions.Add(new Transaction { Sender = sender, Recipient = recipient, Amount = amount });
@@ -136,6 +162,11 @@ namespace Blockchain
 
         public Block LastBlock => Chain.Last();
 
+        /// <summary>
+        /// Creates a SHA-256 hash of a Block
+        /// </summary>
+        /// <param name="block">Block</param>
+        /// <returns></returns>
         public static string Hash(Block block)
         {
             var blockString = JsonConvert.SerializeObject(block);
@@ -146,6 +177,14 @@ namespace Blockchain
             }
         }
 
+        /// <summary>
+        /// Simple Proof of Work Algorithm:
+        /// 
+        /// - Find a number p' such that hash(pp') contains leading 4 zeroes
+        /// - Where p is the previous proof, and p' is the new proof
+        /// </summary>
+        /// <param name="lastBlock">last Block</param>
+        /// <returns></returns>
         public static long ProofOfWork(Block lastBlock)
         {
             var lastProof = lastBlock.Proof;
@@ -158,6 +197,13 @@ namespace Blockchain
             return proof;
         }
 
+        /// <summary>
+        /// Validates the Proof
+        /// </summary>
+        /// <param name="lastProof">Previous Proof</param>
+        /// <param name="proof">Current Proof</param>
+        /// <param name="lastHash">The hash of the Previous Block</param>
+        /// <returns>true if correct, false if not.</returns>
         public static bool ValidProof(long lastProof, long proof, string lastHash)
         {
             var guess = $"{lastProof.ToString()}{proof.ToString()}{lastHash}";
