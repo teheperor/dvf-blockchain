@@ -41,6 +41,11 @@ func New() *Blockchain {
 	return b
 }
 
+/*
+Add a new node to the list of nodes
+
+ address: Address of node. Eg. 'http://192.168.0.5:5000'
+*/
 func (b *Blockchain) RegisterNode(address string) error {
 	if !strings.HasPrefix(address, "http://") {
 		address = "http://" + address
@@ -53,6 +58,12 @@ func (b *Blockchain) RegisterNode(address string) error {
 	return nil
 }
 
+/*
+Determine if a given blockchain is valid
+
+ chain: A blockchain
+ return: true if valid, false if not
+*/
 func ValidChain(chain []*Block) bool {
 	lastBlock := chain[0]
 	currentIndex := 1
@@ -79,6 +90,11 @@ func ValidChain(chain []*Block) bool {
 	return true
 }
 
+/*
+This is our consensus algorithm, it resolves conflicts by replacing our chain with the longest one in the network.
+
+ return: true if our chain was replaced, false if not
+*/
 func (b *Blockchain) ResolveConflicts() bool {
 	neighbors := b.Nodes
 	var newChain []*Block
@@ -113,6 +129,13 @@ func (b *Blockchain) ResolveConflicts() bool {
 	return false
 }
 
+/*
+Create a new Block in the Blockchain
+
+ proof: The proof given by the Proof of Work algorithm
+ previous_hash: Hash of previous Block
+ return: New Block
+*/
 func (b *Blockchain) NewBlock(proof int64, previousHash string) *Block {
 	block := &Block{
 		Index:        int32(len(b.Chain) + 1),
@@ -128,6 +151,14 @@ func (b *Blockchain) NewBlock(proof int64, previousHash string) *Block {
 	return block
 }
 
+/*
+Creates a new transaction to go into the next mined Block
+
+ sender: Address of the Sender
+ recipient: Address of the Recipient
+ amount: Amount
+ return: The index of the Block that will hold this transaction
+*/
 func (b *Blockchain) NewTransaction(sender string, recipient string, amount int64) int32 {
 	b.currentTransactions = append(
 		b.currentTransactions,
@@ -140,12 +171,26 @@ func (b *Blockchain) LastBlock() *Block {
 	return b.Chain[len(b.Chain)-1]
 }
 
+/*
+Creates a SHA-256 hash of a Block
+
+ block: Block
+*/
 func Hash(block *Block) string {
 	blockBytes, _ := json.Marshal(block)
 	hashBytes := sha256.Sum256(blockBytes)
 	return hex.EncodeToString(hashBytes[:])
 }
 
+/*
+Simple Proof of Work Algorithm:
+
+ - Find a number p' such that hash(pp') contains leading 4 zeroes
+ - Where p is the previous proof, and p' is the new proof
+
+ last_block: last Block
+ return:
+*/
 func ProofOfWork(lastBlock *Block) int64 {
 	lastProof := lastBlock.Proof
 	lastHash := Hash(lastBlock)
@@ -158,6 +203,14 @@ func ProofOfWork(lastBlock *Block) int64 {
 	return proof
 }
 
+/*
+Validates the Proof
+
+ last_proof: Previous Proof
+ proof: Current Proof
+ last_hash: The hash of the Previous Block
+ return: true if correct, false if not.
+*/
 func ValidProof(lastProof int64, proof int64, lastHash string) bool {
 	guess := fmt.Sprintf("%d%d%s", lastProof, proof, lastHash)
 	guessHashBytes := sha256.Sum256([]byte(guess))
