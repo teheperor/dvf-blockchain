@@ -133,7 +133,7 @@ func (b *Blockchain) ResolveConflicts() bool {
 Create a new Block in the Blockchain
 
  proof: The proof given by the Proof of Work algorithm
- previous_hash: Hash of previous Block
+ previousHash: Hash of previous Block
  return: New Block
 */
 func (b *Blockchain) NewBlock(proof int64, previousHash string) *Block {
@@ -188,7 +188,7 @@ Simple Proof of Work Algorithm:
  - Find a number p' such that hash(pp') contains leading 4 zeroes
  - Where p is the previous proof, and p' is the new proof
 
- last_block: last Block
+ lastBlock: last Block
  return:
 */
 func ProofOfWork(lastBlock *Block) int64 {
@@ -206,9 +206,9 @@ func ProofOfWork(lastBlock *Block) int64 {
 /*
 Validates the Proof
 
- last_proof: Previous Proof
+ lastProof: Previous Proof
  proof: Current Proof
- last_hash: The hash of the Previous Block
+ lastHash: The hash of the Previous Block
  return: true if correct, false if not.
 */
 func ValidProof(lastProof int64, proof int64, lastHash string) bool {
