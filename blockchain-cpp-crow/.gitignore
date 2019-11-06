@@ -330,6 +330,7 @@ ASALocalRun/
 .mfractor/
 
 #
+*.props
 doxygen/
 bin-*/
 obj-*/
