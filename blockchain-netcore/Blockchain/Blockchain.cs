@@ -15,8 +15,8 @@ namespace Blockchain
     [JsonObject(NamingStrategyType = typeof(SnakeCaseNamingStrategy))]
     public class Transaction
     {
-        public string Sender { get; set; }
-        public string Recipient { get; set; }
+        public string Sender { get; set; } = "";
+        public string Recipient { get; set; } = "";
         public long Amount { get; set; }
     }
 
@@ -25,9 +25,9 @@ namespace Blockchain
     {
         public int Index { get; set; }
         public double Timestamp { get; set; }
-        public IList<Transaction> Transactions { get; set; }
+        public IList<Transaction> Transactions { get; set; } = new List<Transaction>();
         public long Proof { get; set; }
-        public string PreviousHash { get; set; }
+        public string PreviousHash { get; set; } = "";
     }
 
     public class Blockchain
@@ -92,7 +92,7 @@ namespace Blockchain
         public async Task<bool> ResolveConflicts()
         {
             var neighbours = Nodes;
-            IList<Block> newChain = null;
+            IList<Block>? newChain = null;
 
             var maxLength = Chain.Count;
 
