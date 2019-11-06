@@ -36,9 +36,9 @@ namespace Blockchain
         public IList<Block> Chain { get; set; } = new List<Block>();
         public HashSet<string> Nodes { get; set; } = new HashSet<string>();
 
-        public Blockchain() => NewBlock(previousHash: "1", proof: 100);
-
         private static readonly HttpClient httpClient = new HttpClient();
+
+        public Blockchain() => NewBlock(previousHash: "1", proof: 100);
 
         /// <summary>
         /// Add a new node to the list of nodes
@@ -157,6 +157,7 @@ namespace Blockchain
         public int NewTransaction(string sender, string recipient, long amount)
         {
             CurrentTransactions.Add(new Transaction { Sender = sender, Recipient = recipient, Amount = amount });
+
             return LastBlock.Index + 1;
         }
 

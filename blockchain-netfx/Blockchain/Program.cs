@@ -27,7 +27,7 @@ namespace Blockchain
                 var lastBlock = blockchain.LastBlock;
                 var proof = Blockchain.ProofOfWork(lastBlock);
 
-                blockchain.NewTransaction("0", nodeIdentifier, 1);
+                blockchain.NewTransaction(sender: "0", recipient: nodeIdentifier, amount: 1);
 
                 var previousHash = Blockchain.Hash(lastBlock);
                 var block = blockchain.NewBlock(proof, previousHash);
