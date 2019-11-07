@@ -1,41 +1,37 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "build",
-            "type": "shell",
-            "command": "cargo",
-            "args": [
-                "build",
-            ]
-        },
-        {
-            "label": "build release",
-            "type": "shell",
-            "command": "cargo",
-            "args": [
-                "build",
-            ]
-        },
-        {
-            "label": "test",
-            "type": "shell",
-            "command": "cargo",
-            "args": [
-                "test",
-            ]
-        },
-        {
-            "label": "doc",
-            "type": "shell",
-            "command": "cargo",
-            "args": [
-                "doc",
-                "--no-deps",
-                "--document-private-items"
-            ]
-        }
-    ]
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "cargo",
+      "subcommand": "build",
+      "problemMatcher": ["$rustc"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "type": "cargo",
+      "subcommand": "test",
+      "problemMatcher": ["$rustc"],
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "build release",
+      "type": "shell",
+      "command": "cargo",
+      "args": ["build", "--release"]
+    },
+    {
+      "label": "doc",
+      "type": "shell",
+      "command": "cargo",
+      "args": ["doc", "--no-deps", "--document-private-items"]
+    }
+  ]
 }
