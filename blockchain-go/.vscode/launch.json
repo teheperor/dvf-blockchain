@@ -28,6 +28,20 @@
       "request": "launch",
       "mode": "test",
       "program": "${file}"
+    },
+    {
+      "name": "Attach to Process",
+      "type": "go",
+      "request": "attach",
+      "mode": "local",
+      "processId": "${input:processId}"
+    }
+  ],
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "processId",
+      "description": "Process ID"
     }
   ]
 }
