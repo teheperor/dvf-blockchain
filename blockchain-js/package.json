@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node src/app.js",
     "test": "mocha --require intelli-espower-loader",
-    "start-app": "node src/app.js",
-    "start-app-with-worker": "node --experimental-worker src/app-with-worker.js"
+    "start-app-with-worker": "node --experimental-worker src/app-with-worker.js",
+    "jsdoc": "jsdoc src -r -d docs"
   },
   "keywords": [],
   "author": "",
