@@ -2,13 +2,13 @@
   "name": "blockchain-ts",
   "version": "1.0.0",
   "description": "",
-  "main": "test.js",
+  "main": "app.js",
   "scripts": {
+    "build": "tsc",
     "start": "node dist/src/app.js",
     "test": "mocha --require espower-typescript/guess \"test/**/*.ts\"",
-    "tsc": "tsc",
-    "start-app": "node dist/src/app.js",
-    "start-app-with-worker": "node --experimental-worker dist/src/app-with-worker.js"
+    "start-app-with-worker": "node --experimental-worker dist/src/app-with-worker.js",
+    "typedoc": "typedoc --readme none"
   },
   "keywords": [],
   "author": "",
