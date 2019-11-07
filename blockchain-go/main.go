@@ -10,7 +10,7 @@ import (
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 
-	"./blockchain"
+	"blockchain-go/blockchain"
 )
 
 func main() {
