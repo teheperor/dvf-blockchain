@@ -1,6 +1,6 @@
-# dvf-blockchain .NET Core
+# dvf-blockchain C#(.NET Core)
 
-[Learn Blockchains by Building One \- HackerNoon\.com](https://hackernoon.com/learn-blockchains-by-building-one-117428612f46)をC# .NET Core 2.2くらいで写経した。
+[Learn Blockchains by Building One \- HackerNoon\.com](https://hackernoon.com/learn-blockchains-by-building-one-117428612f46)をC#(.NET Core)で写経した。
 
 ## Dependency
  - [Json.NET](https://github.com/JamesNK/Newtonsoft.Json)
