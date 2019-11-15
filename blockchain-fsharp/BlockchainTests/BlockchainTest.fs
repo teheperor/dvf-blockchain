@@ -2,9 +2,6 @@
 open Expecto
 open Blockchain
 
-open System
-open Chiron
-
 #nowarn "25"
 let tests = 
     test "BlockchainTest" {
