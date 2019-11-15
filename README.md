@@ -23,6 +23,14 @@
   - プローフオブワーク処理が重いのでworker_threadsモジュールを使ったバージョンも書いた。
 - [blockchain-go](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-go)
   - Goで写経。
+- [blockchain-ts](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-ts)
+  - [blockchain-js](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-js)をTypeScript 3.6で書き換えた。
+- [blockchain-rust](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-rust)
+  - Rustで写経。
+- [blockchain-kotlin](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-kotlin)
+  - Kotlinで写経。
+- [blockchain-fsharp](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-fsharp)
+  - 関数型言語をやってみたかったのでF#で写経してみた。
 
 ## Test
 
