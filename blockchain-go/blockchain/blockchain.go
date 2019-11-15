@@ -70,8 +70,10 @@ func ValidChain(chain []*Block) bool {
 
 	for currentIndex < len(chain) {
 		block := chain[currentIndex]
-		fmt.Println(lastBlock)
-		fmt.Println(block)
+		lastBlockBytes, _ := json.Marshal(lastBlock)
+		blockBytes, _ := json.Marshal(block)
+		fmt.Println(string(lastBlockBytes))
+		fmt.Println(string(blockBytes))
 		fmt.Print("\n-----------\n")
 
 		lastBlockHash := Hash(lastBlock)
