@@ -35,8 +35,6 @@ class BlockchainTest {
         let {
             val proof = Blockchain.proofOfWork(b.lastBlock)
             val previousHash = Blockchain.hash(b.lastBlock)
-//            assertEquals(2964, proof)
-//            assertEquals("26aa6d44bd141589a0d3a1a90b86bf411de90d948abab3557b5b30ca75e4e904", previousHash)
             assertEquals(72933, proof)
             assertEquals("90bdb00faa87325f291cbc1b2d6875cfa581cc98b491eee7559527560853b804", previousHash)
 
@@ -67,8 +65,6 @@ class BlockchainTest {
         let {
             val proof = Blockchain.proofOfWork(b.lastBlock)
             val previousHash = Blockchain.hash(b.lastBlock)
-//            assertEquals(2409, proof)
-//            assertEquals("7ef1a64eec40e553f39acc252bb3444100d6a95f305e74c2fc40d41d86bbc1d4", previousHash)
             assertEquals(18153, proof)
             assertEquals("eb187c2382022b4beaf0c974536d1e7706125ce5fcdab33c5ab7b4bcb2294e4a", previousHash)
 
@@ -95,8 +91,6 @@ class BlockchainTest {
         let {
             val proof = Blockchain.proofOfWork(b.lastBlock)
             val previousHash = Blockchain.hash(b.lastBlock)
-//            assertEquals(28486, proof)
-//            assertEquals("2d095dd4fb79711fdb3e780f5ae6ddab1190ddfaa170ee1a1dcb2425bd645652", previousHash)
             assertEquals(118903, proof)
             assertEquals("f9095455b0b191f444d9458fef5c8bb759bc05117e44e6c799de2209eb61a2c2", previousHash)
         }

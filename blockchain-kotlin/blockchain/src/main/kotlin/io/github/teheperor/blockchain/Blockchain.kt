@@ -201,7 +201,6 @@ class Blockchain() {
                 .digest(guess.toByteArray())
                 .joinToString(separator = "") { "%02x".format(it) }
             return guessHash.startsWith("0000")
-//            return guessHash.startsWith("000")
         }
     }
 }
