@@ -10,6 +10,8 @@ Web APIフレームワークを[crow](https://github.com/ipkn/crow)から[cpp-ht
  - [crow](https://github.com/ipkn/crow)と違って[cpp-httplib](https://github.com/yhirose/cpp-httplib)はデフォルトでアクセスログを出力してくれなかったので[easyloggingpp](https://github.com/zuhd-org/easyloggingpp)でログを出力するようにした。
  - ユニットテスト・フレームワークを無駄に[Catch2](https://github.com/catchorg/Catch2)から[doctest](https://github.com/onqtam/doctest)に変えてみた。
 
+Visual Studio 2019からMicrosoft.Cpp.Win32.userプロパティシートがなくなったため、Blockchain.propsを作成してBoostという名前のマクロでBoostライブラリのパスを指定すること。
+
 ## Dependency
 
  - [Boost](https://www.boost.org/doc/libs/1_70_0/)

@@ -4,8 +4,9 @@
 
 ## Description
 
-はじめに写経したときは.NET Frameworkを使ったけど、たぶんこれからは.NET Coreを主に使っていく。  
-もし更新することがあったら、こっちではなく[.NET Core版](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-netcore)の方を更新すると思う。
+最初に書いたC#版。  
+VS2019、.NET Framework 4.8を使った。  
+Webアプリケーションフレームワークは[Nancy](https://github.com/NancyFx/Nancy)、Webサーバーは[Nancyのセルフホスティング](https://github.com/NancyFx/Nancy/wiki/Self-Hosting-Nancy)を使用。  
 
 ## Dependency
 

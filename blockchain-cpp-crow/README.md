@@ -5,7 +5,8 @@
 ## Description
 
 はじめに[crow](https://github.com/ipkn/crow)を使用して書いたのがこれ。  
-[crow](https://github.com/ipkn/crow)がしばらく更新されていなかったので[cpp-httplib](https://github.com/yhirose/cpp-httplib)を使うように切り替えて書いたのが[blockchain-cpp](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-cpp)。
+[crow](https://github.com/ipkn/crow)がしばらく更新されていなかったので[cpp-httplib](https://github.com/yhirose/cpp-httplib)を使うように切り替えて書いたのが[blockchain-cpp](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-cpp)。  
+Visual Studio 2019からMicrosoft.Cpp.Win32.userプロパティシートがなくなったため、Blockchain.propsを作成してBoostという名前のマクロでBoostライブラリのパスを指定すること。
 
 ## Dependency
 
