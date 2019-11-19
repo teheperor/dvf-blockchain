@@ -5,7 +5,7 @@
 ## Description
 
 はじめにC#で写経してみたら、コード量が少ないわりにWenアプリケーションフレームワーク、HTTPクライアント、JSON、ハッシュ生成とかいろいろな要素が入っていてプログラミング言語や開発環境やエコシステムの学習のいい題材になると思った。  
-それでほかのプログラミング言語でもやってみることにしてC#、C++、JavaScript、Go、TypeScript、Rust、Kotlin、F#で写経した。  
+それでほかのプログラミング言語でもやってみようと思いC#、C++、JavaScript、Go、TypeScript、Rust、Kotlin、F#で写経した。  
 
 基本的な方針は[オリジナルのPythonのコード](https://github.com/dvf/blockchain)の設計、構造、名前、エラー処理、処理結果をできるだけ維持して写経すること。  
 処理結果、特にプルーフオブワーク処理の結果については異なるプログラミング言語による実装間での互換性は維持しない。理由はタイムスタンプの精度（桁数）やJSONのフォーマットを合わせるのが面倒くさいから。  
@@ -13,7 +13,7 @@
 それぞれのプログラミング言語や開発環境やエコシステムの学習を重視する。  
 
 - C# [blockchain-netfx](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-netfx)
-  - はじめにC#で書いた。
+  - 最初に書いたC#版。
 - C# [blockchain-netcore](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-netcore)
   - [blockchain-netfx](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-netfx)を.NET Coreのプロジェクトにして更新した。
 - C++ [blockchain-cpp-crow](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-cpp-crow)
@@ -29,7 +29,7 @@
 
 ## Test
 
-[postman](https://www.getpostman.com/products)の[テスト・コレクション](https://github.com/teheperor/dvf-blockchain/tree/master/postman)とPythonの[テスト](https://github.com/teheperor/dvf-blockchain/tree/master/test)を書いた。  
+[postman](https://www.getpostman.com/)の[テスト・コレクション](https://github.com/teheperor/dvf-blockchain/tree/master/test/postman)とPythonの[テスト](https://github.com/teheperor/dvf-blockchain/tree/master/test/python)を書いた。  
 どちらも同じ内容で2つのノードにアクセスして正常系の処理だけを一通りテストする。  
 
 ## License
