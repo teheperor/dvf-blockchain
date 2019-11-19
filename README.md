@@ -5,7 +5,7 @@
 ## Description
 
 はじめにC#で写経してみたら、コード量が少ないわりにHTTPクライアント＆サーバー、JSON、ハッシュ生成とかいろいろな要素が入っていてプログラミング学習のいい題材になると思った。  
-それでほかのプログラミング言語でもやってみることにして、今までC++、C#、JavaScript、Go、TypeScript、Rust、Kotlin、F#で写経した。
+それでほかのプログラミング言語でもやってみることにして、今までC#、C++、JavaScript、Go、TypeScript、Rust、Kotlin、F#で写経した。
 
 - [blockchain-netfx](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-netfx)
   - はじめにC#で写経した。
