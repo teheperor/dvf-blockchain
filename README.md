@@ -4,8 +4,8 @@
 
 ## Description
 
-はじめにC#で写経してみたら、HTTPのサーバーとクライアントやJSONの入出力とか、細かいところでハッシュ生成とかコマンドラインパーサーとかロガーとかが必要になったりして、これは新しく触れるプログラミング言語とその環境についてのいい学習題材になると思った。  
-それでC#で書いた後にC++、JavaScript(Node.js)、Go、TypeScript、Rust、Kotlin、F#で書いてみた。
+はじめにC#で写経してみたら、コード量が少ないわりにHTTPクライアント＆サーバー、JSON、ハッシュ生成とかいろいろな要素が入っていてプログラミング学習のいい題材になると思った。  
+それでほかのプログラミング言語でもやってみることにして、今までC++、C#、JavaScript、Go、TypeScript、Rust、Kotlin、F#で写経した。
 
 - [blockchain-netfx](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-netfx)
   - はじめにC#で写経した。
@@ -16,11 +16,9 @@
   - [crow](https://github.com/ipkn/crow)はずいぶん更新されていないので[cpp\-httplib](https://github.com/yhirose/cpp-httplib)に切り替えて[blockchain-cpp](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-cpp)を書いた。
 - [blockchain-cpp](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-cpp)
   - C++版を[crow](https://github.com/ipkn/crow)から[cpp\-httplib](https://github.com/yhirose/cpp-httplib)を使うように切り替えた。
-  - ロギング処理などを更新した。
-  - 元のC++版は[blockchain\-cpp\-crow](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-cpp-crow)
 - [blockchain-js](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-js)
   - JavaScript(Node.js)で写経。
-  - プローフオブワーク処理が重いのでworker_threadsモジュールを使ったバージョンも書いた。
+  - プローフオブワーク処理が重いのでworker_threadsモジュールを使ったバージョンも追加した。
 - [blockchain-go](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-go)
   - Goで写経。
 - [blockchain-ts](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-ts)
@@ -30,12 +28,13 @@
 - [blockchain-kotlin](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-kotlin)
   - Kotlinで写経。
 - [blockchain-fsharp](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-fsharp)
-  - 関数型言語をやってみたかったのでF#で写経してみた。
+  - 関数型言語をやってみたかったのでF#で写経。
 
 ## Test
 
-[postman](https://github.com/teheperor/dvf-blockchain/tree/master/postman)に[postman](https://www.getpostman.com/products)でのテスト・コレクション、[test](https://github.com/teheperor/dvf-blockchain/tree/master/test)にpython3でのテスト・スクリプトがある。
-どちらも次のWeb APIにアクセスして応答をテストをする（これは正常系のテストのみ）。
+[postman](https://github.com/teheperor/dvf-blockchain/tree/master/postman)に[postman](https://www.getpostman.com/products)でのテスト・コレクション、[test](https://github.com/teheperor/dvf-blockchain/tree/master/test)にpython3でのテスト・スクリプトがある。  
+どちらも次のWeb APIにアクセスして応答をテストをする。  
+（Server1とServer2のデフォルト値はそれぞれhttp://localhost:5000とhttp://localhost:5001）
 - Server1 /chain
 - Server1 /mine
 - Server1 /chain
