@@ -4,7 +4,11 @@
 
 ## Description
 
-関数型言語をやってみたかった＆F#の学習のために書いてみた。
+VS2019を使った。
+[blockchain-netcore](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-netcore)をF#に書き換えた。  
+JSONの扱いには[Chiron](https://github.com/xyncro/chiron)、Webアプリケーションフレームワークには[Suave](https://github.com/SuaveIO/suave)を使用した。どちらもやりたいことを実現するために調べるのにすこし苦労したけど実現できた。  
+
+F#も含めて関数型プログラミング言語は本を読んだことがあるだけだったのでこの程度のものでもいい学習になった。ループを再帰に書き換えたりその中でパターンマッチを使ってリストを処理したりするだけでもなるほど感があった。  
 
 ## Dependency
 
