@@ -5,7 +5,8 @@
 ## Description
 
 [blockchain-netfx](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-netfx)を.NET Coreのプロジェクトにしたもの。  
-.NET Coreでは[Self Hosting Nancy](https://github.com/NancyFx/Nancy/wiki/Self-Hosting-Nancy)が使えなかったため[ASP\.NET CoreのKestrel Webサーバー](https://docs.microsoft.com/ja-jp/aspnet/core/fundamentals/servers/kestrel)に替えた。
+.NET Coreでは[Self Hosting Nancy](https://github.com/NancyFx/Nancy/wiki/Self-Hosting-Nancy)が使えなかったため[ASP.NET CoreのKestrel Webサーバー](https://docs.microsoft.com/ja-jp/aspnet/core/fundamentals/servers/kestrel)に替えた。  
+[.NET Core 3.0でC# 8.0になった](https://docs.microsoft.com/ja-jp/dotnet/core/whats-new/dotnet-core-3-0#c-80)ので[null許容参照型](https://docs.microsoft.com/ja-jp/dotnet/csharp/nullable-references)を導入した。  
 
 ## Dependency
  - [Json.NET](https://github.com/JamesNK/Newtonsoft.Json)
