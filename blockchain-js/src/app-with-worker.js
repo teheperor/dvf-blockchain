@@ -25,7 +25,7 @@ const main = () => {
 
   const blockchain = new Blockchain();
 
-  app.get('/mine', (req, res) => {
+  app.get('/mine', (_req, res) => {
     const lastBlock = blockchain.lastBlock;
     const worker = new Worker(`${__dirname}/proof_of_work.js`, { workerData: lastBlock })
     worker.on('message', msg => {
@@ -60,7 +60,7 @@ const main = () => {
     res.status(201).json(response);
   });
 
-  app.get('/chain', (req, res) => {
+  app.get('/chain', (_req, res) => {
     const response = {
       'chain': blockchain.chain,
       'length': blockchain.chain.length,
@@ -85,7 +85,7 @@ const main = () => {
     return res.status(201).json(response);
   });
 
-  app.get('/nodes/resolve', (req, res, next) => {
+  app.get('/nodes/resolve', (_req, res, next) => {
     (async () => {
       const replaced = await blockchain.resolveConflicts();
 
