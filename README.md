@@ -13,7 +13,7 @@
 それぞれのプログラミング言語や開発環境やエコシステムの学習を重視する。  
 
 - C# [blockchain-netfx](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-netfx)
-  - はじめにC#で書いた。
+  - 最初に書いたC#版。
 - C# [blockchain-netcore](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-netcore)
   - [blockchain-netfx](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-netfx)を.NET Coreのプロジェクトにして更新した。
 - C++ [blockchain-cpp-crow](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-cpp-crow)
@@ -29,7 +29,7 @@
 
 ## Test
 
-[postman](https://www.getpostman.com/products)の[テスト・コレクション](https://github.com/teheperor/dvf-blockchain/tree/master/postman)とPythonの[テスト](https://github.com/teheperor/dvf-blockchain/tree/master/test)を書いた。  
+[postman](https://www.getpostman.com/)の[テスト・コレクション](https://github.com/teheperor/dvf-blockchain/tree/master/test/postman)とPythonの[テスト](https://github.com/teheperor/dvf-blockchain/tree/master/test/python)を書いた。  
 どちらも同じ内容で2つのノードにアクセスして正常系の処理だけを一通りテストする。  
 
 ## License
