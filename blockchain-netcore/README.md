@@ -2,6 +2,11 @@
 
 [Learn Blockchains by Building One \- HackerNoon\.com](https://hackernoon.com/learn-blockchains-by-building-one-117428612f46)をC#(.NET Core)で写経した。
 
+## Description
+
+[blockchain-netfx](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-netfx)を.NET Coreのプロジェクトにしたもの。  
+.NET Coreでは[Self Hosting Nancy](https://github.com/NancyFx/Nancy/wiki/Self-Hosting-Nancy)が使えなかったため[ASP\.NET CoreのKestrel Webサーバー](https://docs.microsoft.com/ja-jp/aspnet/core/fundamentals/servers/kestrel)に替えた。
+
 ## Dependency
  - [Json.NET](https://github.com/JamesNK/Newtonsoft.Json)
  - [Nancy](https://github.com/NancyFx/Nancy)
