@@ -6,7 +6,7 @@ import morgan from 'morgan';
 import uuidv4 from 'uuid/v4';
 import { Worker, workerData } from 'worker_threads';
 
-import { Transaction, Block, Blockchain } from './blockchain';
+import { Block, Blockchain } from './blockchain';
 
 const main = () => {
   program.
@@ -24,7 +24,7 @@ const main = () => {
 
   const blockchain = new Blockchain();
 
-  app.get('/mine', (req, res) => {
+  app.get('/mine', (_req, res) => {
     const lastBlock = blockchain.lastBlock;
     const worker = new Worker(`${__dirname}/proof_of_work.js`, { workerData: lastBlock })
     worker.on('message', (msg: number) => {
@@ -59,7 +59,7 @@ const main = () => {
     res.status(201).json(response);
   });
 
-  app.get('/chain', (req, res) => {
+  app.get('/chain', (_req, res) => {
     const response = {
       'chain': humps.decamelizeKeys(blockchain.chain) as Block[],
       'length': blockchain.chain.length,
@@ -84,7 +84,7 @@ const main = () => {
     return res.status(201).json(response);
   });
 
-  app.get('/nodes/resolve', (req, res, next) => {
+  app.get('/nodes/resolve', (_req, res, next) => {
     (async () => {
       const replaced = await blockchain.resolveConflicts();
 
