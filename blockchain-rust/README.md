@@ -8,13 +8,6 @@ Rust 2018、VSCodeを使った。
 
 unwrap()使いまくっているのはエラー処理はオリジナルのPythonのコードと同程度にしかしないという方針のため。  
 
-Webアプリケーションフレームワークにははじめ[Actix web](https://github.com/actix/actix-web)を使って進めていたけど、Actix webと[reqwest](https://github.com/seanmonstar/reqwest)を組み合わせて使うやり方が分からなかった。  
-非同期は標準化やライブラリの対応が落ち着いてから、ということにしてWebアプリケーションフレームワークは[nickel.rs](https://github.com/nickel-org/nickel.rs)に切り替えた。  
-今確認したら2019/11/07に[async/awaitがstableになってた](https://blog.rust-lang.org/2019/11/07/Async-await-stable.html)。  
-
-浅くしか触れていないけどゼロコスト抽象化、所有権、借用、ライフタイムあたりにはしびれる。学習コスト高そうだけどもっとやってみたいと思える。Cargoや[creates.io](https://crates.io/)などのエコシステムもいい。  
-ビルド時間の長さと生成物のサイズの大きさの改善は将来に期待。  
-
 ## Dependency
 
  - [Serde](https://github.com/serde-rs/serde)
