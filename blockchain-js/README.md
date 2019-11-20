@@ -7,9 +7,6 @@
 Node.js 12.x (ES2015)、VSCodeを使った。  
 プルーフオブワーク処理が重くてほかの処理がブロックされていたので[Worker Threadsモジュール](https://nodejs.org/docs/latest-v12.x/api/worker_threads.html)を使用して別スレッドで処理するバージョンも追加した。  
 
-JavaScriptはC#やC++と比べてオリジナルのPythonのコードと同じように書きやすかった。  
-npmやVSCodeの使い方を調べて進めたのである程度は身についた気がする。  
-
 ## Dependency
 
  - [json-stable-stringify](https://github.com/substack/json-stable-stringify)
