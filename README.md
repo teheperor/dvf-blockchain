@@ -20,6 +20,7 @@
   - はじめにC++で書いたもの。
 - C++ [blockchain-cpp](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-cpp)
   - [blockchain-cpp-crow](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-cpp-crow)で使用している[ipkn/crow](https://github.com/ipkn/crow)の開発が止まっていることと、ほかのものも試してみたかったのでWebアプリケーションフレームワークを[cpp-httplib](https://github.com/yhirose/cpp-httplib)に変更した。
+  - [Boost](https://www.boost.org/)への依存をなくして、UUID V4生成には[sole](https://github.com/r-lyeh-archived/sole)を使うようにした。
 - JavaScript(Node.js) [blockchain-js](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-js)
 - Go [blockchain-go](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-go)
 - TypeScript [blockchain-ts](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-ts)
