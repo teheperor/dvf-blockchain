@@ -14,7 +14,6 @@
 
 ## Dependency
 
- - [Boost](https://www.boost.org/doc/libs/1_70_0/)
  - [JSON for Modern C++](https://github.com/nlohmann/json)
  - [PicoSHA2](https://github.com/okdshin/PicoSHA2)
  - [url-cpp](https://github.com/seomoz/url-cpp)
