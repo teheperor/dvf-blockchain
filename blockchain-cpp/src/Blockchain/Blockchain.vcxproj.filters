@@ -22,6 +22,9 @@
     <Filter Include="easyloggingpp">
       <UniqueIdentifier>{408f0d2a-ece5-4feb-bce2-311f70592e88}</UniqueIdentifier>
     </Filter>
+    <Filter Include="sole">
+      <UniqueIdentifier>{e9a80cf5-5e59-4a34-9be6-44ba256395c6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="blockchain.hpp">
@@ -53,6 +56,9 @@
     </ClInclude>
     <ClInclude Include="..\easyloggingpp\easylogging++.h">
       <Filter>easyloggingpp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\sole\sole.hpp">
+      <Filter>sole</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

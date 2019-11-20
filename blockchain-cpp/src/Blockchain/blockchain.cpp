@@ -2,18 +2,8 @@
 #include <cstdint>
 #include <algorithm>
 #include <iostream>
+#include <sstream>
 #include <string>
-#define BOOST_DATE_TIME_NO_LIB
-#define BOOST_REGEX_NO_LIB
-#define BOOST_ERROR_CODE_HEADER_ONLY
-#define BOOST_SYSTEM_NO_LIB
-#include <boost/algorithm/string/erase.hpp>
-#include <boost/uuid/random_generator.hpp>
-#include <boost/uuid/uuid_io.hpp>
-#undef BOOST_DATE_TIME_NO_LIB
-#undef BOOST_REGEX_NO_LIB
-#undef BOOST_ERROR_CODE_HEADER_ONLY
-#undef BOOST_SYSTEM_NO_LIB
 
 #pragma warning(push)
 #pragma warning(disable: 4244)
@@ -25,6 +15,7 @@
 #pragma warning(pop)
 #include "easyloggingpp/easylogging++.h"
 #include "nlohmann/json.hpp"
+#include "sole/sole.hpp"
 #include "blockchain.hpp"
 
 INITIALIZE_EASYLOGGINGPP
@@ -42,9 +33,14 @@ int main(int argc, char* argv[]) {
 		logger->info("%v - %v %v %v %v", remote_addr.c_str(), req.method, req.path, req.version, res.status);
 	});
 
-	boost::uuids::random_generator gen;
-	auto const uuid = boost::uuids::to_string(gen());
-	auto const node_identifier = boost::algorithm::erase_all_copy(uuid, "-");
+	auto const node_identifier = []() {
+		auto const uuid = sole::uuid4();
+		auto stream = std::stringstream();
+		stream
+			<< std::hex << std::nouppercase << std::setfill('0')
+			<< std::setw(8) << (uuid.ab & 0xFFFFFFFFFFFF0FFFULL) << std::setw(8) << (uuid.cd & 0x3FFFFFFFFFFFFFFFULL);
+		return stream.str();
+	}();
 
 	blockchain::blockchain blockchain;
 
