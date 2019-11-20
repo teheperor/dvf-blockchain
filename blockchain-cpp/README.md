@@ -21,6 +21,7 @@
  - [cpp-httplib](https://github.com/yhirose/cpp-httplib)
  - [easyloggingpp](https://github.com/zuhd-org/easyloggingpp)
  - [cmdline](https://github.com/tanakh/cmdline)
+ - [sole](https://github.com/r-lyeh-archived/sole)
  - [doctest](https://github.com/onqtam/doctest)
 
 ## License
