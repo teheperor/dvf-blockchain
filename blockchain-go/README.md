@@ -8,11 +8,6 @@ Go 1.13、VSCodeを使った。
 
 エラーを捨てまくっているのはエラー処理はオリジナルのPythonのコードと同程度にしかしないという方針のため。  
 
-ほぼはじめてのGo。ずいぶん前に本をすこし読んだことがあるだけ。  
-[標準ライブラリ](https://golang.org/pkg/)がとても充実していて、追加したのはUUID V4生成のための[uuid](https://github.com/google/uuid)とWebアプリケーションフレームワークの[echo](https://github.com/labstack/echo)の2つだけ。  
-
-はじめGOPATHを設定して進めていた時は面倒な感じがあったけど、GOPATHを設定せずに[Go 1.11 Modules](https://github.com/golang/go/wiki/Modules)を使うようにしたら解消した。  
-
 ## Dependency
 
  - [uuid](https://github.com/google/uuid)
