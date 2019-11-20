@@ -4,8 +4,9 @@
 
 ## Description
 
-[blockchain-js](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-js)をTypeScriptで書き換えた。  
-blockchain-jsでは不要だった[humps](https://github.com/domchristie/humps)を使用するようになった。
+TypeScript 3.6、VSCodeを使った。  
+[blockchain-js](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-js)のJavaScriptコードをTypeScriptに書き換えただけ。  
+C#やC++でやっていたようにJSONのキー名をスネークケースにするため[humps](https://github.com/domchristie/humps)が必要になった。  
 
 ## Dependency
 

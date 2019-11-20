@@ -4,7 +4,9 @@
 
 ## Description
 
-[Rust](https://www.rust-lang.org/)の学習のために書いてみた。
+Rust 2018、VSCodeを使った。  
+
+unwrap()使いまくっているのはエラー処理はオリジナルのPythonのコードと同程度にしかしないという方針のため。  
 
 ## Dependency
 

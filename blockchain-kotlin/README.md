@@ -4,7 +4,10 @@
 
 ## Description
 
-[Kotlin](https://kotlinlang.org/)の学習のために書いてみた。
+Kotlin 1.3、IntelliJ IDEA 2019.2を使った。  
+
+Webアプリケーションフレームワークは[Ktor](https://github.com/ktorio/ktor)を使用。すこし前に見かけた[Javalin](https://github.com/tipsy/javalin)がいいかなーと思ったけどせっかくなのでKotlinで書かれたKtorで。  
+コマンドラインパーサーには[Kotlin ArgParser](https://github.com/xenomachina/kotlin-argparser)を使用。[kotlinx.cli](https://github.com/Kotlin/kotlinx.cli)の方が好みだったけど現在開発中でgradleからダウンロードできるリポジトリに置いてなかったので見送り。  
 
 ## Dependency
 

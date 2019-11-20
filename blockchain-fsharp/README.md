@@ -4,7 +4,8 @@
 
 ## Description
 
-関数型言語をやってみたかった＆F#の学習のために書いてみた。
+VS2019を使った。
+[blockchain-netcore](https://github.com/teheperor/dvf-blockchain/tree/master/blockchain-netcore)をF#に書き換えた。  
 
 ## Dependency
 

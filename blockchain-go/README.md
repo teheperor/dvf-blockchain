@@ -4,7 +4,9 @@
 
 ## Description
 
-[Go](https://golang.org/)と[VSCode](https://code.visualstudio.com/)の環境構築のお勉強のために書いてみた。
+Go 1.13、VSCodeを使った。  
+
+エラーを捨てまくっているのはエラー処理はオリジナルのPythonのコードと同程度にしかしないという方針のため。  
 
 ## Dependency
 

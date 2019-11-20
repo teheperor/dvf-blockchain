@@ -30,7 +30,7 @@
 ## Test
 
 [postman](https://www.getpostman.com/)の[テスト・コレクション](https://github.com/teheperor/dvf-blockchain/tree/master/test/postman)とPythonの[テスト](https://github.com/teheperor/dvf-blockchain/tree/master/test/python)を書いた。  
-どちらも同じ内容で2つのノードにアクセスして正常系の処理だけを一通りテストする。  
+どちらも同じ内容で2つのノードにアクセスして正常系の動作だけを一通りテストする。  
 
 ## License
 
