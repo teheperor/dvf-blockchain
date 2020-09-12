@@ -20,7 +20,7 @@
     "humps": "^2.0.1",
     "json-stable-stringify": "^1.0.1",
     "morgan": "^1.9.1",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "uuid": "^3.3.3"
   },
   "devDependencies": {
